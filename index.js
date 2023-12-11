@@ -5,7 +5,3 @@ const Text = require('./lib/text');
 
 
 
-// maybe how to write the questions for input?
-
-
-
