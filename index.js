@@ -4,7 +4,26 @@ const { Circle, Triangle, Square, Shapes } = require('./lib/shapes');
 const SVG = require('./lib/text');
 const { run } = require('jest');
 
+// function to generate the logo
+async function runLogoMaker() {
+    const text = await promptForText();
+    const textColor = await promptForTextColor();
+    const shape = await promptForShape();
+    const shapeColor = await promptForShapeColor();
 
+    // missing logic to generate the SVG logo
+    try {
+        const svg = new SVG();
+        shape.setColor(shapeColor);
+        svg.setShape(shape);
+    
+        svg.setText(text, textColor);
+        const logo = svg.render();
+        fs.writeFileSync('./logo.svg', logo);
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 
 // maybe how to write the questions for input?
