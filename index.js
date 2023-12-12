@@ -11,7 +11,6 @@ async function runLogoMaker() {
     const shape = await promptForShape();
     const shapeColor = await promptForShapeColor();
 
-    // missing logic to generate the SVG logo
     try {
         const svg = new SVG();
         shape.setColor(shapeColor);
@@ -26,8 +25,7 @@ async function runLogoMaker() {
 }
 
 
-// maybe how to write the questions for input?
-// should they stay on index.js or should they be moved to another file?
+// function to prompt user for text
 async function promptForText() {
     const answers = await inquirer.prompt([
       {
@@ -40,6 +38,7 @@ async function promptForText() {
     return answers.text;
 }
 
+// function to prompt user for text color
 async function promptForTextColor() {
     const answers = await inquirer.prompt([
         {
@@ -51,6 +50,7 @@ async function promptForTextColor() {
     return answers.textColor;
 }
 
+// function to prompt user for shape
 async function promptForShape() {
     const answers = await inquirer.prompt([
         {
@@ -75,6 +75,7 @@ async function promptForShape() {
     return shape;
 }
 
+// function to prompt user for shape color
 async function promptForShapeColor() {
     const answers = await inquirer.prompt([
         {
