@@ -1,7 +1,9 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-const Shapes = require('./lib/shapes');
-const Text = require('./lib/text');
+const { Circle, Triangle, Square, Shapes } = require('./lib/shapes');
+const SVG = require('./lib/text');
+const { run } = require('jest');
+
 
 
 
@@ -36,10 +38,22 @@ async function promptForShape() {
             type: 'list',
             name: 'shape',
             message: 'Choose a shape for the logo:',
-            choices: Shapes.getSupportedShapes(),
+            choices: ["Circle", "Triangle", "Square"]
         },
     ]);
-    return answers.shape;
+    let shape = answers.shape
+    switch (shape) {
+        case "Circle":
+            shape = new Circle();
+            break;
+        case "Triangle":
+            shape = new Triangle();
+            break;
+        case "Square":
+            shape = new Square();
+            break;
+    }
+    return shape;
 }
 
 async function promptForShapeColor() {
@@ -53,4 +67,4 @@ async function promptForShapeColor() {
     return answers.shapeColor;
 }
 
-// create function to generate the SVG logo
+runLogoMaker();
