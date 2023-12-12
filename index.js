@@ -19,6 +19,7 @@ async function runLogoMaker() {
         svg.setText(text, textColor);
         const logo = svg.render();
         fs.writeFileSync('./logo.svg', logo);
+        console.log('Generated logo.svg');
     } catch (error) {
         console.error(error);
     }
